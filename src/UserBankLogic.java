@@ -29,9 +29,11 @@ public class UserBankLogic extends GetSetBallansFile {
                     break;
                 default:
                     System.out.println("Такой опперации нету");
+                    throw new RuntimeException();
             }
         } else {
             System.out.println("Вы не ввели операцию");
+            throw new RuntimeException();
         }
 
     }
@@ -60,6 +62,7 @@ public class UserBankLogic extends GetSetBallansFile {
                     break;
                 default:
                     System.out.println("Такой валюты нету");
+                    throw new RuntimeException();
             }
         }
     }
@@ -89,6 +92,7 @@ public class UserBankLogic extends GetSetBallansFile {
                     break;
                 default:
                     System.out.println("Такой валюты нету");
+                    throw new RuntimeException();
             }
         }
     }
@@ -113,31 +117,33 @@ public class UserBankLogic extends GetSetBallansFile {
                     if (ball[1] - hold >= 0) {
                         super.setBallans(ball[0], ball[1] - hold, ball[2], ball[3], ball[4]);
                         checkConvert = true;
-                    }else
+                    } else
                         System.out.println("Недостточно средств");
                 } else if (current.equals("KZT")) {
                     ammount = ammount * KZT;
                     if (ball[2] - hold >= 0) {
                         super.setBallans(ball[0], ball[1], ball[2] - hold, ball[3], ball[4]);
                         checkConvert = true;
-                    }else
+                    } else
                         System.out.println("Недостточно средств");
                 } else if (current.equals("TRY")) {
                     ammount = ammount * TRY;
                     if (ball[3] - hold >= 0) {
                         super.setBallans(ball[0], ball[1], ball[2], ball[3] - hold, ball[4]);
                         checkConvert = true;
-                    }else
+                    } else
                         System.out.println("Недостточно средств");
                 } else if (current.equals("RUB")) {
                     ammount = ammount * RUB;
                     if (ball[4] - hold >= 0) {
                         super.setBallans(ball[0], ball[1], ball[2], ball[3], ball[4] - hold);
                         checkConvert = true;
-                    }else
+                    } else
                         System.out.println("Недостточно средств");
-                } else
+                } else {
                     System.out.println("Error");
+                    throw new RuntimeException();
+                }
 
                 if (checkConvert) {
                     ball = super.getBallans();
@@ -161,13 +167,16 @@ public class UserBankLogic extends GetSetBallansFile {
                             System.out.println("Такой валюты нету");
                     }
                 }
-            } else
+            } else {
                 System.out.println("Обмен не возможен");
+                throw new RuntimeException();
+            }
 
 
-        }
-        else
+        } else {
             System.out.println("ERROR");
+            throw new RuntimeException();
+        }
 
 
     }
