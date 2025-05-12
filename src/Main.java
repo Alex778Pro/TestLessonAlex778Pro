@@ -6,14 +6,21 @@ public class Main {
 
         System.out.println("Программа банка");
         System.out.println("Пример ввода: Внести 40.50 RUB");
-        System.out.println("Операции: Внести, Вывести, Обмен, Баланс");
-        System.out.println("");
-        System.out.print("Введите операцию: ");
+        System.out.println("Операции: Внести, Вывести, Обмен, Баланс\n");
 
-        String operation = scan.nextLine();
+        String operation;
 
-        UserBankLogic ballansFile = new UserBankLogic();
-        ballansFile.operation(operation);
+        while (true) {
+            System.out.print("\nВведите операцию: ");
+            try {
+                operation = scan.nextLine();
+                UserBankLogic ballansFile = new UserBankLogic();
+                ballansFile.operation(operation);
+            } catch (Exception e) {
+                System.out.println("ERROR! EXIT PROGRAM");
+                break;
+            }
+        }
 
 
     }

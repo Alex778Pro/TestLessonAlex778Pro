@@ -175,6 +175,7 @@ public class UserBankLogic extends GetSetBallansFile {
     private void ballansPrint() {
         String[] val = new String[]{"USD", "CNY", "KZT", "TRY", "RUB"};
 
+
         System.out.print("Баланс: ");
         for (int u = 0; u < this.ball.length; u++) {
             String formattedNumber = String.format("%.2f", this.ball[u]);
